@@ -49,7 +49,12 @@ public class Manager extends Employee{
      */
     @Override
     public String getDescription() {
-        return "name: " + getName() + " age: " + getAge() + " salary: " + getSalary();
+        String idFormatted = String.format("%04d", getEmployeeId()); // Filling with zeroes
+        String nameFormatted = String.format("%20s", getName());
+        String ageFormatted = String.format("%5d", getAge());
+        String salaryFormatted = String.format("€%,10.2f", super.getSalary()); //add Euro sign, comma and 2 decimal points precision
+        String bonusFormatted = String.format("€%,8.2f", getBonus());
+        return idFormatted + "     " + nameFormatted + "     " + ageFormatted + "     " + salaryFormatted + "     " + bonusFormatted + "\n" + getName() + "'s effective salary is: " + "€"+getSalary();
     }
 
 }

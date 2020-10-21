@@ -4,8 +4,8 @@ package l00161844.assign1;
  * @author Paulo Jardim
  */
 public class Employee extends Person implements Comparable<Employee> {
-    private int employeeId;
-    private static int idGenerator;
+    private int employeeId = 0;
+    private static int idGenerator = 1;
     private double salary;
 
     /**
@@ -14,19 +14,18 @@ public class Employee extends Person implements Comparable<Employee> {
     public Employee(){
         super();
         salary = 0.0;
-        idGenerator++;
+        employeeId++;
     }
 
     /**
      * initialize all employee instance fields
      * @param n the employee name
-     * @param a the employee age
-     * @param s the employee salary
+     *
      */
     public Employee(String n, int a, double s){
         super(n,a);
         salary = s;
-        idGenerator++;
+        employeeId++;
     }
 
     /**
@@ -51,7 +50,11 @@ public class Employee extends Person implements Comparable<Employee> {
      */
     @Override
     public String getDescription() {
-        return "name: " + getName() + " age: " + getAge() + " salary: " + getSalary();
+        String idFormatted = String.format("%04d", getEmployeeId()); // Filling with zeroes
+        String nameFormatted = String.format("%20s", getName());
+        String ageFormatted = String.format("%5d", getAge());
+        String salaryFormatted = String.format("€%,10.2f", getSalary());
+        return idFormatted + "     " + nameFormatted + "     " + ageFormatted + "     " + salaryFormatted;
     }
 
     /**
