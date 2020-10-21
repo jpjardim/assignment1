@@ -9,5 +9,11 @@ public class Main {
         Manager m1 = new Manager("John Doe", 45, 5000.0, 3000.0);
         System.out.println(m1.getDescription());
 
+        Employee e2 = new Employee("Mark", 35, 3400.00);
+        System.out.println(e2.getDescription());
+
+        Manager m2 = new Manager("John Doe", 35, 503200.0, 3800.0);
+        System.out.println(m2.getDescription());
+
     }
 }

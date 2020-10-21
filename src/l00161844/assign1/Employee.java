@@ -4,8 +4,8 @@ package l00161844.assign1;
  * @author Paulo Jardim
  */
 public class Employee extends Person implements Comparable<Employee> {
-    private int employeeId = 0;
-    private static int idGenerator = 1;
+    private int employeeId;
+    private static int idGenerator;
     private double salary;
 
     /**
@@ -14,7 +14,8 @@ public class Employee extends Person implements Comparable<Employee> {
     public Employee(){
         super();
         salary = 0.0;
-        employeeId++;
+        idGenerator++;
+        employeeId=idGenerator;
     }
 
     /**
@@ -25,7 +26,8 @@ public class Employee extends Person implements Comparable<Employee> {
     public Employee(String n, int a, double s){
         super(n,a);
         salary = s;
-        employeeId++;
+        idGenerator++;
+        employeeId=idGenerator;
     }
 
     /**
