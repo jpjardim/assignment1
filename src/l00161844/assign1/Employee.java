@@ -1,9 +1,11 @@
 package l00161844.assign1;
 
+import java.util.Comparator;
+
 /**
- * @author Paulo Jardim
+ * @author paulo_jardim
  */
-public class Employee extends Person implements Comparable<Employee> {
+public class Employee extends Person implements Comparable<Employee>, PartTimeAble {
     private int employeeId;
     private static int idGenerator;
     private double salary;
@@ -12,9 +14,7 @@ public class Employee extends Person implements Comparable<Employee> {
      * default constructor and set salary to 0.0
      */
     public Employee(){
-        super();
-        salary = 0.0;
-        idGenerator++;
+        super(); salary = 0.0; idGenerator++;
         employeeId=idGenerator;
     }
 
@@ -24,9 +24,7 @@ public class Employee extends Person implements Comparable<Employee> {
      *
      */
     public Employee(String n, int a, double s){
-        super(n,a);
-        salary = s;
-        idGenerator++;
+        super(n,a); salary = s; idGenerator++;
         employeeId=idGenerator;
     }
 
@@ -44,6 +42,10 @@ public class Employee extends Person implements Comparable<Employee> {
      */
     public double getSalary(){
         return this.salary;
+    }
+
+    public void updateSalary(double s){
+        salary += s;
     }
 
     /**
@@ -66,9 +68,10 @@ public class Employee extends Person implements Comparable<Employee> {
      */
     @Override
     public int compareTo(Employee other) {
-        if (this.salary - other.salary > 0)
+        double result = Double.compare(this.salary, other.salary);
+        if (result > 0)
             return 1;
-        if (this.salary - other.salary < 0)
+        if (result < 0)
             return -1;
         return 0;
     }
@@ -92,5 +95,10 @@ public class Employee extends Person implements Comparable<Employee> {
                 (this.salary == other.salary))
             return true;
         return false;
+    }
+
+    @Override
+    public void doJob(Job j) {
+        updateSalary(j.getPrice()*.4);
     }
 }

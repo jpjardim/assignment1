@@ -2,7 +2,7 @@ package l00161844.assign1;
 
 
 /**
- * @author Paulo Jardim
+ * @author paulo_jardim
  *
  */
 

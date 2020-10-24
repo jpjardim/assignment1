@@ -1,7 +1,7 @@
 package l00161844.assign1;
 
 /**
- * @author Paulo Jardim
+ * @author paulo_jardim
  */
 public class Manager extends Employee{
     private double bonus;
@@ -57,4 +57,8 @@ public class Manager extends Employee{
         return idFormatted + "     " + nameFormatted + "     " + ageFormatted + "     " + salaryFormatted + "     " + bonusFormatted + "\n" + getName() + "'s effective salary is: " + "€"+getSalary();
     }
 
+    @Override
+    public void doJob(Job j) {
+        updateSalary(j.getPrice()*.7);
+    }
 }
