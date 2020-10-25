@@ -1,5 +1,9 @@
 package l00161844.assign1;
 
+import l00161844.assign1.item12.ConsolePrint;
+import l00161844.assign1.item12.FancyPrint;
+import l00161844.assign1.item12.SimplePrint;
+
 import java.util.Comparator;
 
 /**
@@ -9,6 +13,7 @@ public class Employee extends Person implements Comparable<Employee>, PartTimeAb
     private int employeeId;
     private static int idGenerator;
     private double salary;
+    private ConsolePrint printer = null;
 
     /**
      * default constructor and set salary to 0.0
@@ -23,8 +28,8 @@ public class Employee extends Person implements Comparable<Employee>, PartTimeAb
      * @param n the employee name
      *
      */
-    public Employee(String n, int a, double s){
-        super(n,a); salary = s; idGenerator++;
+    public Employee(String n, int a, double s, FancyPrint f){
+        super(n,a); salary = s; idGenerator++; printer = f;
         employeeId=idGenerator;
     }
 
@@ -97,8 +102,35 @@ public class Employee extends Person implements Comparable<Employee>, PartTimeAb
         return false;
     }
 
+    /**
+     *
+     * @param j the job object
+     */
     @Override
     public void doJob(Job j) {
         updateSalary(j.getPrice()*.4);
+    }
+
+    /**
+     * set the printer tupe to simple
+     * @param s the simple printer
+     */
+    public void setSimplePrinter(SimplePrint s){
+        printer = s;
+    }
+
+    /**
+     * set the printer type to fancy
+     * @param f the fancy printer
+     */
+    public void setFancyPrinter(FancyPrint f){
+        printer = f;
+    }
+
+    /**
+     * wrapper method to invoke Simple or Fancy printer
+     */
+    public void printDescription(){
+        printer.printInfo(getDescription());
     }
 }

@@ -1,5 +1,9 @@
 package l00161844.assign1;
 
+import l00161844.assign1.item12.ConsolePrint;
+import l00161844.assign1.item12.FancyPrint;
+import l00161844.assign1.item12.SimplePrint;
+
 import java.util.ArrayList;
 
 /**
@@ -9,6 +13,7 @@ public class Student extends Person implements PartTimeAble{
     double beerMoney;
     String course;
     ArrayList<Job> jobs;
+    private ConsolePrint printer = null;
 
     /**
      * default constructor
@@ -18,6 +23,17 @@ public class Student extends Person implements PartTimeAble{
      */
     public Student (String n, int a, String c){
         super(n,a); course = c; beerMoney =0; jobs = new ArrayList<Job>();
+    }
+
+    /**
+     * overloaded constructor with the printer param
+     * @param n the student name
+     * @param a the student age
+     * @param c the student course
+     * @param f the printer type (fancy or simple print)
+     */
+    public Student (String n, int a, String c, FancyPrint f){
+        super(n,a); course = c; beerMoney =0; jobs = new ArrayList<Job>(); printer = f;
     }
 
     /**
@@ -72,5 +88,28 @@ public class Student extends Person implements PartTimeAble{
      */
     public ArrayList<Job> getJobs(){
         return jobs;
+    }
+
+    /**
+     * set the printer tupe to simple
+     * @param s the simple printer
+     */
+    public void setSimplePrinter(SimplePrint s){
+        printer = s;
+    }
+
+    /**
+     * set the printer type to fancy
+     * @param f the fancy printer
+     */
+    public void setFancyPrinter(FancyPrint f){
+        printer = f;
+    }
+
+    /**
+     * wrapper method to invoke Simple or Fancy printer
+     */
+    public void printDescription(){
+        printer.printInfo(getDescription());
     }
 }
