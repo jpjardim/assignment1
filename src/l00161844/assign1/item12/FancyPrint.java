@@ -1,9 +1,19 @@
 package l00161844.assign1.item12;
 
-public class FancyPrint implements ConsolePrint{
+/**
+ * @author paulo_jardim
+ */
 
+public class FancyPrint implements ConsolePrint{
+    /**
+     * Default constructor
+     */
     public FancyPrint(){}
 
+    /**
+     * Implements printInfo method
+     * @param infoToprint String to be printed
+     */
     @Override
     public void printInfo(String infoToprint) {
         String[] part = infoToprint.split(" ", 2); //split the String in two
